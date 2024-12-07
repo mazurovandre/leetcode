@@ -11,22 +11,18 @@
  * @return {boolean}
  */
 
-const getHeight = function (root) {
-    if (root === null) return 0;
+const search = function (root) {
+    if (root === null) return [1, 0];
 
-    const left = getHeight(root.left);
-    const right = getHeight(root.right);
+    const left = search(root.left);
+    const right = search(root.right);
 
-    return 1 + Math.max(left, right);
+    const isBalanced = left[0] === 1 && right[0] === 1 && Math.abs(left[1] - right[1]) <= 1;
+    const height = 1 + Math.max(left[1], right[1]);
+
+    return [isBalanced ? 1 : 0, height];
 };
 
 const isBalanced = function(root) {
-    if (root === null) return true;
-
-    const leftHeight = getHeight(root.left);
-    const rightHeight = getHeight(root.right);
-
-    if (Math.abs(leftHeight - rightHeight) > 1) return false;
-
-    return isBalanced(root.left) && isBalanced(root.right);
+    return search(root)[0] === 1;
 };
