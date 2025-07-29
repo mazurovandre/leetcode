@@ -6,23 +6,19 @@ var countAndSay = function(n) {
     if (n === 1) return '1';
     const str = countAndSay(n - 1);
 
-    const result = [];
-    let count = 0;
-    let currentChar = str[0];
+    let result = '';
+    let count = 1;
 
-    for (const char of str) {
-        if (char === currentChar) {
+    for (let i = 1; i < str.length; i++) {
+        if (str[i] === str[i - 1]) {
             count++;
         } else {
-            result.push(`${count}${currentChar}`);
-            currentChar = char;
+            result += count + str[i - 1];
             count = 1;
         }
     }
 
-    if (count) {
-        result.push(`${count}${currentChar}`);
-    }
+    result += count + str[str.length - 1];
     
-    return result.join('');
+    return result;
 };
