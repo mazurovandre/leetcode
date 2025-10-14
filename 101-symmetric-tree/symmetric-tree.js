@@ -21,6 +21,7 @@ var isSymmetric = function(root) {
 
         if (!node) {
             result[level].push(null);
+            
             return;
         }
 
@@ -32,9 +33,6 @@ var isSymmetric = function(root) {
     
     handleNode(root.left, leftPart, 0);
     handleNode(root.right, rightPart, 0);
-
-    console.log('===>', leftPart)
-    console.log('===>', rightPart)
 
     for (let i = 0; i < leftPart.length; i++) {
         const leftArr = leftPart[i];
