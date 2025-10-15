@@ -8,13 +8,13 @@ var rotate = function(matrix) {
 
     for (let row = 0; row < size; row++) {
         for (let col = 0; col < size; col++) {
-            result[col] = [matrix[row][col], ...result[col]]
+            result[col] = [matrix[row][col], ...result[col]];
         }
     }
 
     for (let row = 0; row < size; row++) {
         for (let col = 0; col < size; col++) {
-            matrix[row][col] = result[row][col]
+            matrix[row][col] = result[row][col];
         }
     }
 
