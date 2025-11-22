@@ -3,13 +3,5 @@
  * @return {number}
  */
 var minimumOperations = function(nums) {
-    let result = 0;
-
-    for (const num of nums) {
-        if (num % 3 !== 0) {
-            result++;
-        }
-    }
-
-    return result;
+    return nums.reduce((acc, num) => acc + (num % 3 ? 1 : 0), 0);
 };
